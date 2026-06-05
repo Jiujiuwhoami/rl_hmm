@@ -1,11 +1,46 @@
 import numpy as np
 import pandas as pd
-import gym
-from gym import spaces
 from typing import Callable, Dict, List, Optional, Tuple
 from ..config import Config
 from ..hmm import MultiTimeframeHMM
 from ..features import FeatureEngineer
+
+# 尝试导入 gym，如果失败则设为 None
+try:
+    import gym
+    from gym import spaces
+    GYM_AVAILABLE = True
+except ImportError:
+    gym = None
+    spaces = None
+    GYM_AVAILABLE = False
+
+
+# 如果 gym 可用，创建基础类
+if GYM_AVAILABLE:
+    _GymEnv = gym.Env
+else:
+    # 如果 gym 不可用，创建一个简单的替代基类
+    class _GymEnv:
+        """简化的环境基类（当 gym 不可用时）"""
+        metadata = {'render.modes': []}
+        action_space = None
+        observation_space = None
+        
+        def __init__(self):
+            pass
+        
+        def seed(self, seed=None):
+            pass
+        
+        def step(self, action):
+            raise NotImplementedError("需要 gym 才能使用 step 方法")
+        
+        def reset(self):
+            raise NotImplementedError("需要 gym 才能使用 reset 方法")
+        
+        def render(self, mode='human'):
+            pass
 
 
 # ============ 策略接口（可插拔） ============
@@ -102,7 +137,7 @@ class DefaultObservationBuilder(ObservationBuilder):
         return base_features.astype(np.float32)
 
 
-class TradingEnv(gym.Env):
+class TradingEnv(_GymEnv):
     """RL交易环境 - 支持可插拔策略和多时间框架"""
 
     def __init__(
@@ -114,7 +149,8 @@ class TradingEnv(gym.Env):
         observation_builder: Optional[ObservationBuilder] = None,
         use_hmm: bool = True
     ):
-        super().__init__()
+        if GYM_AVAILABLE:
+            super().__init__()
         
         # 多时间框架数据：{时间框架: DataFrame}
         self.dfs = {k: v.reset_index(drop=True) for k, v in dfs.items()}

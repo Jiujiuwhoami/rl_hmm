@@ -1,12 +1,23 @@
-from stable_baselines3 import PPO
-from stable_baselines3.common.vec_env import DummyVecEnv
-from stable_baselines3.common.callbacks import EvalCallback
+# 尝试导入 stable_baselines3，如果失败则设为 None
+try:
+    from stable_baselines3 import PPO
+    from stable_baselines3.common.vec_env import DummyVecEnv
+    from stable_baselines3.common.callbacks import EvalCallback
+    SB3_AVAILABLE = True
+except ImportError:
+    PPO = None
+    DummyVecEnv = None
+    EvalCallback = None
+    SB3_AVAILABLE = False
 
 
 class PPOAgent:
     """PPO强化学习Agent"""
 
     def __init__(self, vec_env, config):
+        if not SB3_AVAILABLE:
+            raise ImportError("stable_baselines3 is required for PPOAgent. Install with: pip install rl-hmm[gym]")
+        
         self.config = config
         self.vec_env = vec_env
         self.model = PPO("MlpPolicy", vec_env, verbose=1, tensorboard_log=config.tensorboard_dir)

@@ -1,4 +1,11 @@
-from stable_baselines3.common.vec_env import DummyVecEnv
+# 尝试导入 stable_baselines3，如果失败则设为 None
+try:
+    from stable_baselines3.common.vec_env import DummyVecEnv
+    SB3_AVAILABLE = True
+except ImportError:
+    DummyVecEnv = None
+    SB3_AVAILABLE = False
+
 from ..config import Config
 from ..data import DataLoader
 from ..environment import TradingEnv
@@ -10,6 +17,9 @@ class TradingSystem:
     """RL-HMM交易系统主类"""
 
     def __init__(self, config: Config = None):
+        if not SB3_AVAILABLE:
+            raise ImportError("stable_baselines3 is required for TradingSystem. Install with: pip install rl-hmm[gym]")
+        
         self.config = config or Config()
         self.data_loader = DataLoader(self.config)
         self.evaluator = Evaluator(self.config)
