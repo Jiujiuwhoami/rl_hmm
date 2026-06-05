@@ -1,0 +1,109 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Data files (不要提交训练和测试数据)
+*.csv
+*.xlsx
+*.parquet
+*.pickle
+*.pkl
+*.joblib
+
+# Model files
+*.pkl
+*.pt
+*.h5
+*.zip
+*.pth
+*.ckpt
+
+# Images
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+
+# Logs
+*.log
+*.log.*
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# PyCharm
+.idea/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+*.coverage
+tox.ini
+
+# Temporary files
+*.tmp
+*.temp
+cache/
+*.cache
+
+# TensorBoard
+tensorboard/
+logs/
+
+# 项目特定文件 - 指南（可选，只保留英文或中文）
+PUBLISH_GUIDE.md
+GITHUB_CI_SETUP.md
+
+# 项目特定文件 - 用户本地脚本
+train_*.py
+test_*.py
+analyze_*.py
+*_strategy.py
+
+# 但保留 examples 文件夹
+!examples/*.py
+
+# 项目特定文件 - 运行时文件
+equity_curve*.png
+daily_returns*.png
+*_results.csv
