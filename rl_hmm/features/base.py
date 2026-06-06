@@ -133,6 +133,12 @@ def feature_ema_20(df: pd.DataFrame) -> pd.Series:
     return df['Close'].ewm(span=20, adjust=False).mean()
 
 
+@FeatureRegistry.register('bollinger_mid')
+def feature_bollinger_mid(df: pd.DataFrame, window: int = 20) -> pd.Series:
+    """布林带中轨（移动平均）"""
+    return df['Close'].rolling(window).mean()
+
+
 @FeatureRegistry.register('bollinger_upper')
 def feature_bollinger_upper(df: pd.DataFrame, window: int = 20) -> pd.Series:
     """布林带上轨"""
