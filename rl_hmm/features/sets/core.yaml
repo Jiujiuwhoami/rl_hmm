@@ -1,0 +1,14 @@
+name: core
+description: "核心 9 特征 — 收益率 + RSI + MACD + 波动率 + ATR + 均线 + 成交量变化"
+signal_interval: 15m
+early_minutes: 0
+features:
+  - return
+  - rsi
+  - macd
+  - macd_hist
+  - volatility
+  - atr
+  - sma_20
+  - ema_20
+  - vol_change

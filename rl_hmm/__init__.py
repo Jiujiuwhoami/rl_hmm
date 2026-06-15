@@ -14,6 +14,7 @@ from .agents import PPOAgent
 from .data import DataLoader
 from .evaluation import Evaluator
 from .system import TradingSystem
+from .ensemble import EnsembleClassifier
 
 __version__ = "0.2.1"
 __all__ = [
@@ -33,4 +34,5 @@ __all__ = [
     'DataLoader',
     'Evaluator',
     'TradingSystem',
+    'EnsembleClassifier',
 ]

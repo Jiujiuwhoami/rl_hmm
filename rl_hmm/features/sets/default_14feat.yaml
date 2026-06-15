@@ -1,0 +1,22 @@
+name: default_14feat
+description: "14 标准技术指标 — 动量 + 波动率 + 趋势"
+signal_interval: 15m
+early_minutes: 0
+features:
+  # 动量
+  - return
+  - rsi
+  - macd
+  - macd_signal
+  - macd_hist
+  # 波动率
+  - volatility
+  - atr
+  - bollinger_upper
+  - bollinger_lower
+  - vol_change
+  # 趋势
+  - sma_20
+  - ema_20
+  - sma_60
+  - vol_ma_ratio

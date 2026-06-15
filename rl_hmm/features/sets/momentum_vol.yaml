@@ -1,0 +1,13 @@
+name: momentum_vol
+description: "动量 + 波动率特征组合 (8 features)"
+signal_interval: 15m
+early_minutes: 0
+features:
+  - return
+  - rsi
+  - macd
+  - macd_signal
+  - macd_hist
+  - volatility
+  - atr
+  - vol_change

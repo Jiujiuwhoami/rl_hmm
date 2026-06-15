@@ -1,0 +1,9 @@
+name: rsi_macd
+description: "仅 RSI + MACD 组合 (4 features)"
+signal_interval: 15m
+early_minutes: 0
+features:
+  - rsi
+  - macd
+  - macd_signal
+  - macd_hist

@@ -1,0 +1,37 @@
+name: st_features
+description: "ST 策略完整特征集 — MACD 背离 + ATR 通道 + 趋势 + 成交量 (28 features)"
+signal_interval: 15m
+early_minutes: 5
+features:
+  # MACD
+  - macd
+  - macd_signal
+  - macd_hist
+  # 背离
+  - top_divergence
+  - bottom_divergence
+  - trend_flag
+  - price_by_macd
+  - price_vs_macd_ref
+  # ATR 通道
+  - atr
+  - atr_stop_value
+  - atr_stop_direction
+  - price_vs_atr_stop
+  # 趋势
+  - ema_60
+  - ema_720
+  - sma_20
+  - ema_20
+  # 成交量
+  - vol_ma_60
+  - vol_ma_ratio
+  - vol_prev_ratio
+  - volume_filter_strict
+  - vol_change
+  # 其他技术指标
+  - return
+  - rsi
+  - volatility
+  - bollinger_upper
+  - bollinger_lower

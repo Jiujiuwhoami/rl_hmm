@@ -1,0 +1,20 @@
+name: no_bollinger
+description: "去掉布林带 (12 features)"
+signal_interval: 15m
+early_minutes: 0
+features:
+  # 动量
+  - return
+  - rsi
+  - macd
+  - macd_signal
+  - macd_hist
+  # 波动率 (无布林带)
+  - volatility
+  - atr
+  - vol_change
+  # 趋势
+  - sma_20
+  - ema_20
+  - sma_60
+  - vol_ma_ratio

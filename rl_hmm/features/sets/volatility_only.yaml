@@ -1,0 +1,10 @@
+name: volatility_only
+description: "仅波动率指标 — ATR + 布林带 + 成交量变化 (5 features)"
+signal_interval: 15m
+early_minutes: 0
+features:
+  - volatility
+  - atr
+  - bollinger_upper
+  - bollinger_lower
+  - vol_change

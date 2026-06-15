@@ -1,0 +1,9 @@
+name: trend_only
+description: "仅趋势指标 — 均线 + 量比 (4 features)"
+signal_interval: 15m
+early_minutes: 0
+features:
+  - sma_20
+  - ema_20
+  - sma_60
+  - vol_ma_ratio

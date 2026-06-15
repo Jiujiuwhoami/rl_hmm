@@ -1,0 +1,19 @@
+name: no_macd
+description: "去掉 MACD 系列 (11 features)"
+signal_interval: 15m
+early_minutes: 0
+features:
+  # 动量 (无 MACD)
+  - return
+  - rsi
+  # 波动率
+  - volatility
+  - atr
+  - bollinger_upper
+  - bollinger_lower
+  - vol_change
+  # 趋势
+  - sma_20
+  - ema_20
+  - sma_60
+  - vol_ma_ratio

@@ -1,0 +1,10 @@
+name: momentum_only
+description: "仅动量指标 — 收益率 + RSI + MACD (5 features)"
+signal_interval: 15m
+early_minutes: 0
+features:
+  - return
+  - rsi
+  - macd
+  - macd_signal
+  - macd_hist
